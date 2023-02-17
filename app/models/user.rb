@@ -5,7 +5,9 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable, :confirmable, :trackable,
          authentication_keys: [:login] 
 
-         validates :username, presence: true, uniqueness: true
+         validates :username, presence: true, uniqueness: true,
+         format: { with: /\A[a-zA-Z0-9]+\z/, message: "can only contain letters and numbers"},
+         length: { maximum: 6 }
 
          attr_accessor :login
 
