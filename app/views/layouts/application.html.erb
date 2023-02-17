@@ -5,13 +5,11 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
-    <%= javascript_importmap_tags %>
+    <%= javascript_include_tag "application", "data-turbo-track": "reload", defer: true %>
   </head>
-
   <body>
-  <%= render 'shared/header' %>
+    <%= render 'layouts/navbar' %>
     <% if flash[:notice] %>
       <div class="alert alert-success alert-dismissible fade show mb-0" role="alert">
         <%= flash[:notice] %>
@@ -23,7 +21,7 @@
         <%= flash[:alert] %>
         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
       </div>
-     <% end %>
+    <% end %>
     <div class="container-fluid">
       <%= yield %>
     </div>
